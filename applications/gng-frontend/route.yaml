@@ -9,6 +9,9 @@ spec:
   host: gng-frontend-griot-grits.apps.ocp-test.nerc.mghpcc.org
   port:
     targetPort: 8080
+  tls:
+    insecureEdgeTerminationPolicy: Redirect
+    termination: edge
   to:
     kind: Service
     name: gng-frontend
