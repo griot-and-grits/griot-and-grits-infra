@@ -4,9 +4,7 @@ metadata:
   labels:
     app: gng-frontend
   name: gng-frontend
-  namespace: griot-grits
 spec:
-  host: gng-frontend-griot-grits.apps.ocp-test.nerc.mghpcc.org
   port:
     targetPort: 3000
   tls:
