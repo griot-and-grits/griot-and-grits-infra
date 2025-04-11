@@ -22,11 +22,14 @@ spec:
         app: gng-frontend
     spec:
       containers:
-      - image: quay.io/cpigues/gng-frontend:v1.0.0
+      - envFrom:
+        - secretRef:
+            name: griot-grits-api-secrets
+        image: quay.io/cpigues/gng-frontend-api:latest
         imagePullPolicy: Always
         name: gng-frontend
         ports:
-        - containerPort: 8080
+        - containerPort: 3000
           protocol: TCP
       dnsPolicy: ClusterFirst
       restartPolicy: Always
