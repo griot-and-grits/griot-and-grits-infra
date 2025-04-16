@@ -26,11 +26,17 @@ spec:
           - name: ASR_ENGINE
             value: openai_whisper
           - name: ASR_MODEL
-            value: base.en
-          - name: MODEL_IDLE_TIMEOUT
-            value: "300"
+            value: tiny.en
           - name: ASR_DEVICE
             value: cuda
+          - name: ASR_MODEL_PATH
+            value: /tmp/.cache
+          - name: MODEL_IDLE_TIMEOUT
+            value: "0"
+          - name: TRANSFORMERS_CACHE
+            value: /tmp/huggingface/hub
+          - name: MPLCONFIGDIR
+            value: /tmp/.config
         resources:
           requests:
             memory: "256Mi"
@@ -42,6 +48,9 @@ spec:
         ports:
         - containerPort: 9000
           protocol: TCP
+      # tolerations:
+      #   key: "nvidia.com/gpu"
+      #   effect: NoSchedule
       dnsPolicy: ClusterFirst
       restartPolicy: Always
       schedulerName: default-scheduler
