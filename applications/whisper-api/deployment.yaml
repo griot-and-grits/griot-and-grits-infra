@@ -28,7 +28,7 @@ spec:
           - name: ASR_MODEL
             value: base.en
           - name: MODEL_IDLE_TIMEOUT
-            value: 300
+            value: "300"
           - name: ASR_DEVICE
             value: cuda
         resources:
