@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: whisper-api
+  name: whisper-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: whisper-api
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: whisper-api
+    spec:
+      containers:
+      - name: whisper-api
+        image: docker.io/onerahmet/openai-whisper-asr-webservice:latest-gpu
+        env:
+          - name: ASR_ENGINE
+            value: openai_whisper
+          - name: ASR_MODEL
+            value: base.en
+          - name: MODEL_IDLE_TIMEOUT
+            value: 300
+          - name: ASR_DEVICE
+            value: cuda
+        resources:
+          requests:
+            memory: "256Mi"
+            cpu: "500m"
+          limits:
+            memory: "512Mi"
+            cpu: "1000m"
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 9000
+          protocol: TCP
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      terminationGracePeriodSeconds: 30
