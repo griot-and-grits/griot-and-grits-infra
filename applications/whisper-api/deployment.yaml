@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
       - name: whisper-api
-        image: docker.io/onerahmet/openai-whisper-asr-webservice:latest-gpu
+        image: docker.io/onerahmet/openai-whisper-asr-webservice:latest
         env:
           - name: ASR_ENGINE
             value: openai_whisper
@@ -42,7 +42,7 @@ spec:
             memory: "256Mi"
             cpu: "500m"
           limits:
-            memory: "512Mi"
+            memory: "1Gi"
             cpu: "1000m"
         imagePullPolicy: Always
         ports:
