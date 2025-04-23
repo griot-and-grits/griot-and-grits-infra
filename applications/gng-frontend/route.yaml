@@ -5,6 +5,7 @@ metadata:
     app: gng-frontend
   name: gng-frontend
 spec:
+  host: www.griotandgrits.org
   port:
     targetPort: 3000
   tls:
