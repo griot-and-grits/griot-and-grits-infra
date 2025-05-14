@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
       - name: whisper-api
-        image: docker.io/onerahmet/openai-whisper-asr-webservice:latest
+        image: quay.io/rh-ee-sglinton/openai-whisper-asr-webservice:latest
         env:
           - name: ASR_ENGINE
             value: openai_whisper
@@ -41,16 +41,20 @@ spec:
           requests:
             memory: "256Mi"
             cpu: "500m"
+            nvidia.com/gpu: 1
           limits:
             memory: "1Gi"
             cpu: "1000m"
-        imagePullPolicy: Always
+            nvidia.com/gpu: 1
+        imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 9000
           protocol: TCP
-      # tolerations:
-      #   key: "nvidia.com/gpu"
-      #   effect: NoSchedule
+      tolerations:
+      - key: nvidia.com/gpu.product
+        operator: Equal
+        value: Tesla-V100-PCIE-32GB
+        effect: NoSchedule
       dnsPolicy: ClusterFirst
       restartPolicy: Always
       schedulerName: default-scheduler
