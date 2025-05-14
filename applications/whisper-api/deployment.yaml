@@ -39,11 +39,11 @@ spec:
             value: /tmp/.config
         resources:
           requests:
-            memory: "256Mi"
+            memory: "512Mi"
             cpu: "500m"
             nvidia.com/gpu: 1
           limits:
-            memory: "1Gi"
+            memory: "1500Mi"
             cpu: "1000m"
             nvidia.com/gpu: 1
         imagePullPolicy: IfNotPresent
