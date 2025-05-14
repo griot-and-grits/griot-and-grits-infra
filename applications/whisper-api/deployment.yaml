@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
       - name: whisper-api
-        image: quay.io/rh-ee-sglinton/openai-whisper-asr-webservice:latest
+        image: docker.io/onerahmet/openai-whisper-asr-webservice:latest-gpu
         env:
           - name: ASR_ENGINE
             value: openai_whisper
@@ -43,7 +43,7 @@ spec:
             cpu: "500m"
             nvidia.com/gpu: 1
           limits:
-            memory: "1500Mi"
+            memory: "2Gi"
             cpu: "1000m"
             nvidia.com/gpu: 1
         imagePullPolicy: IfNotPresent
