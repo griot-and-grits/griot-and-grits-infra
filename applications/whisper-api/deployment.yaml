@@ -39,12 +39,12 @@ spec:
             value: /tmp/.config
         resources:
           requests:
-            memory: "512Mi"
-            cpu: "500m"
+            memory: "6Gi"
+            cpu: "1000m"
             nvidia.com/gpu: 1
           limits:
-            memory: "2Gi"
-            cpu: "1000m"
+            memory: "12Gi"
+            cpu: "4000m"
             nvidia.com/gpu: 1
         imagePullPolicy: IfNotPresent
         ports:
@@ -53,7 +53,7 @@ spec:
       tolerations:
       - key: nvidia.com/gpu.product
         operator: Equal
-        value: Tesla-V100-PCIE-32GB
+        value: NVIDIA-A100-SXM4-40GB
         effect: NoSchedule
       dnsPolicy: ClusterFirst
       restartPolicy: Always
