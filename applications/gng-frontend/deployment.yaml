@@ -30,6 +30,9 @@ spec:
           limits:
             memory: "256Mi"
             cpu: "750m"
+        env:
+          - name: HOSTNAME
+            value: localhost
         envFrom:
         - secretRef:
             name: griot-grits-api-secrets
