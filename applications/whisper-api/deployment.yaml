@@ -24,7 +24,7 @@ spec:
         image: docker.io/onerahmet/openai-whisper-asr-webservice:latest-gpu
         env:
           - name: ASR_ENGINE
-            value: openai_whisper
+            value: whisperx
           - name: ASR_MODEL
             value: tiny.en
           - name: ASR_DEVICE
