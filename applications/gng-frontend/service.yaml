@@ -13,6 +13,7 @@ spec:
   - port: 3000
     protocol: TCP
     targetPort: 3000
+    name: app
   selector:
     app: gng-frontend
   sessionAffinity: None
