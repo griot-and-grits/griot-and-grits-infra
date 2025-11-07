@@ -1,0 +1,34 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: griot-grits-aa488b
+
+resources:
+  - configmap.yaml
+  - deployment.yaml
+  - service.yaml
+  - route.yaml
+
+# ConfigMap generator for non-sensitive configuration
+configMapGenerator:
+  - name: gng-backend-config
+    literals:
+      - ENVIRONMENT=production
+      - APP_NAME=Griot and Grits API
+      - DEBUG=false
+      - DB_NAME=gngdb
+      - DB_MAX_POOL_SIZE=10
+      - DB_MIN_POOL_SIZE=1
+      - STORAGE_ENDPOINT=minio.griot-grits-aa488b.svc.cluster.local:9000
+      - STORAGE_BUCKET=artifacts
+      - STORAGE_REGION=us-east-1
+      - STORAGE_SECURE=false
+      - PROCESSING_MODE=sync
+      - PROCESSING_ENABLE_METADATA_EXTRACTION=true
+      - PROCESSING_ENABLE_TRANSCRIPTION=false
+      - PROCESSING_ENABLE_LLM_ENRICHMENT=false
+      - GLOBUS_ENABLED=false
+      - GLOBUS_BASE_PATH=/archive/
+
+# Use existing secret created manually
+# Secret should contain: DB_URI, STORAGE_ACCESS_KEY, STORAGE_SECRET_KEY, GLOBUS credentials
