@@ -1,7 +1,7 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
-namespace: griot-grits
+namespace: griot-grits-aa488b
 
 resources:
   - deployment.yaml
